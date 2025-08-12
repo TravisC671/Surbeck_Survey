@@ -8,7 +8,7 @@ services:
     # set shared memory limit when using docker compose
     shm_size: 128mb
     volumes:
-      - postgres_data:/mnt/hdd_4tb/postgres/data/
+      - postgres_data:/file/path
     environment:
       POSTGRES_PASSWORD: example
 
