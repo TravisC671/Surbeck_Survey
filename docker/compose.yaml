@@ -1,23 +1,17 @@
-# Use postgres/example user/password credentials
-
 services:
-
   db:
     image: postgres
     restart: always
-    # set shared memory limit when using docker compose
     shm_size: 128mb
-    volumes:
-      - postgres_data: /file/path
     environment:
       POSTGRES_PASSWORD: example
-      PGDATA: /file/path 
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+    # mounting internal data to external location
+      - /file/path:/var/lib/postgresql/data
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
-
-volumes:
-  postgres_data:
